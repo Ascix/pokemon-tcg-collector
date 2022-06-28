@@ -1,0 +1,10 @@
+.row {
+    display:flex;
+    flex-direction: row;
+    margin: 5% 0 0 5%
+}
+
+.logo {
+    height: 15px;
+    width: auto;
+}
