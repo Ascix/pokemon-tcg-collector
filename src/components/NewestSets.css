@@ -1,0 +1,43 @@
+.row {
+    display: flex;
+    flex-direction: row;
+    margin: 0
+}
+.container {
+    background-color: #EB8F8F;
+    width: 766px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 4px 0 4px;
+    border-radius: 5px;
+    margin: 2% 0 2% 0;
+
+}
+
+.setName {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0 4px 0
+    
+}
+
+.title {
+    display: flex;
+    align-items: center;
+}
+
+.button {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+h1 {
+    color: #EC0101;
+    display:flex;
+    align-items: center;
+}
+
+.card {
+    padding-right: 4px;
+}

@@ -8,14 +8,15 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
 
   return (
-    <AppBar position="static" sx={{ bgcolor: "#EB8F8F" }}>
+    <AppBar sx={{ bgcolor: "#EB8F8F" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Link to="/" ><Typography
             variant="h5"
-            color="#CD0A0A"
+            color="#EC0101"
             sx= {{
-              mr:2
+              mr:2,
+              fontWeight: 'bold'
               }}
           >
             Home
@@ -24,25 +25,41 @@ const Navbar = () => {
           <Link to="/search" >
           <Typography
             variant="h5"
-            color="#CD0A0A"
+            color="#EC0101"
             sx= {{
-                mr:2
+                mr:2,
+                fontWeight: 'bold'
                 }}
           >
             Search
           </Typography></Link>
-                <Typography
-                  variant="h5"
-                  color="#CD0A0A"
-                  sx= {{
-                      mr:2
-                      }}
-                >
-                  About
-                </Typography>
+          <Link to="/set" >
+          <Typography
+            variant="h5"
+            color="#EC0101"
+            sx= {{
+                mr:2,
+                fontWeight: 'bold'
+                }}
+          >
+            Sets
+          </Typography></Link>
+          <Link to="/collection" >
+          <Typography
+              variant="h5"
+              color="#EC0101"
+              sx= {{
+                  mr:2,
+                  fontWeight: 'bold'                   
+                  }}
+          >
+            Collection
+          </Typography>
+          </Link>
         </Toolbar>
       </Container>
     </AppBar>
   );
 };
+
 export default Navbar

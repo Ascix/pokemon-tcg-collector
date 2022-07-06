@@ -4,7 +4,24 @@
     margin: 5% 0 0 5%
 }
 
+.image {
+    margin-left: 2%;
+}
+
+.card {
+    width: 40vh;
+    height: auto;
+}
+
 .logo {
-    height: 15px;
+    height: 20px;
     width: auto;
+}
+
+button {
+    color: #EC0101;
+    background-color: #F1F3DE;
+    padding: 10px;
+    border: 1px solid #EC0101;
+    border-radius: 6px;
 }

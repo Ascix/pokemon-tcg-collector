@@ -1,11 +1,11 @@
 import { Container } from '@mui/material'
 import React from 'react'
-import CardSearch from '../components/Search'
+import NewestSets from '../components/NewestSets'
 
 function Home() {
   return (
     <Container>
-        Home
+      <NewestSets />
     </Container>
   )
 }

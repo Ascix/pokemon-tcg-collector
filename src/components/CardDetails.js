@@ -5,7 +5,6 @@ import { Typography, CardContent } from '@mui/material'
 import './CardDetails.css'
 
 
-
 function CardDetails() {
     const params = useParams()
     const [detail, setDetail] = useState(null)
@@ -26,15 +25,21 @@ function CardDetails() {
     }
   
     return (
+      <>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
         <div align='center' className='row'>
-            <div>
-                <img src={detail.data.images.small}></img>
+            <div className="image">
+                <img className='card' src={detail.data.images.large} alt={detail.data.name}></img>
             </div>
             <React.Fragment>
                 <CardContent >
-                  <Typography 
-                    variant="h5" 
-                    color="text.primary" 
+                  <Typography
+                    variant="h2" 
+                    textAlign="center"
+                    color="#EC0101"
                     gutterBottom>
                       {detail.data.name}
                   </Typography>
@@ -47,13 +52,37 @@ function CardDetails() {
                     variant="body2">
                       Release Date: {new Date(detail.data.set.releaseDate).toLocaleDateString()}
                   </Typography>
+                  {detail.data.tcgplayer.prices.normal ? <Typography 
+                    variant="body2">
+                      Market Price: ~${detail.data.tcgplayer.prices.normal.market.toFixed(2)}*
+                  </Typography> 
+                  : detail.data.tcgplayer.prices.holofoil ? <Typography 
+                    variant="body2">
+                      Market Price: ~${detail.data.tcgplayer.prices.holofoil.market.toFixed(2)}*
+                  </Typography> 
+                  : detail.data.tcgplayer.prices.unlimitedHolofoil ? <Typography 
+                    variant="body2">
+                      Market Price: ~${detail.data.tcgplayer.prices.unlimitedHolofoil.market.toFixed(2)}*
+                  </Typography> 
+                  : detail.data.tcgplayer.prices.unlimited ? <Typography 
+                    variant="body2">
+                      Market Price: ~${detail.data.tcgplayer.prices.unlimited.market.toFixed(2)}*
+                  </Typography> : <Typography 
+                    variant="body2">
+                      Market Price: ~${detail.data.tcgplayer.prices.reverseHolofoil.market.toFixed(2)}*
+                  </Typography> 
+                  }
+                  <br></br>
                   <Typography 
                     variant="body2">
-                      Market Price: ${(detail.data.cardmarket.prices.averageSellPrice * 1.06).toFixed(2)}
+                      * price last checked: {new Date(detail.data.tcgplayer.updatedAt).toLocaleDateString()}
                   </Typography>
+                  <br></br>
+                  <button><a href={detail.data.tcgplayer.url} >TCGplayer</a></button>
                 </CardContent>
             </React.Fragment>
         </div>
+        </>
     )
   }
 

@@ -2,8 +2,10 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import Card from './Card'
-import { Paper, Container, Grid, Typography } from '@mui/material'
-import { styled, } from '@mui/material/styles'
+import { Paper, Container, Grid, Typography, LinearProgress } from '@mui/material'
+import { styled } from '@mui/material/styles'
+import pokemon from 'pokemontcgsdk'
+pokemon.configure({apiKey: '0903cfaf-97d3-42cb-84cf-c142627e9438'})
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: '#F1F3DE',
@@ -14,44 +16,35 @@ const Item = styled(Paper)(({ theme }) => ({
 
 function Set() {
     const params = useParams()
-    const [set, setSet] = useState(null)
-  
-    const getSet = () => {
-        fetch(`https://api.pokemontcg.io/v2/sets/${params.id}`)
-            .then(res => res.json())
-            .then(data => {
-                setSet(data)
-                })
-            }
-  
+    const [set, setSet] = useState([])
+    
     useEffect(() => {
-      getSet()
+      pokemon.card.where({ q: `set.id:${params.id}` })
+          .then(result => {
+            setSet(result.data)
+          })
     }, [])
-    if (!set) {
-      return null
-    }
 
-    let cards = []
-    for (let i = 1; i <= set.data.total; i++) {
-        if (set.data) {
-            cards.push(<Item><Card id={`${set.data.id}-${i}`} image={`https://images.pokemontcg.io/${set.data.id}/${i}.png`} /></Item>)
-        }
-        else if (set.error.code === 404) {
-            return
-        }
-
-    }
-  
     return (
     <div>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
           <Typography 
           variant="h2" 
           textAlign="center"
+          color="#EC0101"
           gutterBottom>
-            {set.data.name}
+            {set[0] ? set[0].set.name : <LinearProgress   sx={{
+    backgroundColor: "#F1F3DE",
+    "& .MuiLinearProgress-bar": {
+      backgroundColor: "#CD0A0A"
+    }
+  }} />}
         </Typography>
         <div align='center' className='row'>
-            <Container align='center' sx={{ m: 2 }}>
+            <Container align='center'>
                 <Grid 
                   className="grid"
                   container 
@@ -59,7 +52,11 @@ function Set() {
                   alignItems="center"
                   justifyContent="center"
                   >
-                    {cards}    
+                {
+                  set.map(card => {
+                    return <Item><Card key={card.id} setid={card.set.id} id={card.id} image={card.images.small} /></Item>
+                })
+                } 
                 </Grid>
             </Container>
         </div>

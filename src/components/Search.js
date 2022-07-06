@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import Card from './Card'
-import { Button, Container, TextField, Grid, Paper } from '@mui/material'
-import { styled, createTheme } from '@mui/material/styles'
+import { Container, Grid, Paper } from '@mui/material'
+import { styled } from '@mui/material/styles'
 import './Search.css'
+import pokemon from 'pokemontcgsdk'
+pokemon.configure({apiKey: '0903cfaf-97d3-42cb-84cf-c142627e9438'})
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: '#F1F3DE',
@@ -11,38 +13,16 @@ const Item = styled(Paper)(({ theme }) => ({
     boxShadow: 'none'
   }));
 
-const CssTextField = styled(TextField)(() => ({
-  root: {
-    '& label.Mui-focused': {
-      color: '#CD0A0A' 
-    },
-    '& .MuiOutlinedInput-root': {
-      '& fieldset': {
-        borderColor: '#CD0A0A',
-      },
-      '&:hover fieldset': {
-        borderColor: '#CD0A0A',
-      },
-      '&.Mui-focused fieldset': {
-        borderColor: '#CD0A0A',
-      },
-    },
-  },
-}));
-
 function CardSearch() {
     const [card, setCard] = useState('')
     const [results, setResults] = useState([])
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        fetch(`https://api.pokemontcg.io/v2/cards?q=name:${card}`)
-            .then(res => res.json())
+        pokemon.card.where({ q: `name:${card}`, orderBy:"set.releaseDate" })
             .then(data => {
-                if (data.count !== 0) {
-                    setCard('')
-                    setResults(data.data)
-                }
+                setCard('')
+                setResults(data.data)
             })
     }
 
@@ -53,19 +33,9 @@ function CardSearch() {
                 <h1>
                     Pokemon TCG Database
                 </h1>
-                <CssTextField
-                    InputProps={{ style: { backgroundColor: "#EB8F8F", color: "#CD0A0A" } }}
-                    inputProps={{ style: { backgroundColor: "#EB8F8F", color: "#CD0A0A" } }}
-                    style={{width: '50%'}}
-                    id="filled-search"
-                    label="Enter a Pokemon"
-                    type="search"
-                    variant="outlined"
-                    value={card}
-                    onChange={(e) => setCard(e.target.value)}
-                />
+                <input type="text" id="card" name="card" placeholder="Search a card"></input><br></br>
                 <br></br>
-                <Button style ={{width: '50%'}} type="submit" variant="outlined">Submit</Button>
+                <button type="submit" variant="outlined">Submit</button>
             </form>
         </Container>
         <Container sx={{ m: 2 }}>
@@ -78,7 +48,7 @@ function CardSearch() {
                 >
                 {
                 results.map(result => {
-                    return <Item><Card setid={result.set.id} id={result.id} image={result.images.small} /></Item>
+                    return <Item><Card key={result.id} setid={result.set.id} id={result.id}  image={result.images.small} /></Item>
                 })
                 }
             </Grid>
