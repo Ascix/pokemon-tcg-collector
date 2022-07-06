@@ -15,3 +15,10 @@ input:focus {
 ::placeholder {
     color: #EC0101
 }
+
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #F1F3DE inset !important;
+  -webkit-text-fill-color: #EC0101 !important;
+}

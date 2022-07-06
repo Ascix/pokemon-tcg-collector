@@ -33,7 +33,7 @@ function CardSearch() {
                 <h1>
                     Pokemon TCG Database
                 </h1>
-                <input type="text" id="card" name="card" placeholder="Search a card"></input><br></br>
+                <input type="text" id="card" name="card" placeholder="Search a card" value={card} onChange={(e) => setCard(e.target.value)}></input><br></br>
                 <br></br>
                 <button type="submit" variant="outlined">Submit</button>
             </form>

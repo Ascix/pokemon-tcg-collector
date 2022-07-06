@@ -1,0 +1,9 @@
+.placeholder img{
+    display:flex;
+    padding: 4px 4px 4px 0
+}
+
+.placeholders {
+    display:flex;
+    flex-direction: row;
+}
