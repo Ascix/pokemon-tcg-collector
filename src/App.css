@@ -11,4 +11,10 @@ body {
   background-color: #F1F3DE;
   display: flex;
   justify-content: center;
+  background-image: url("../public/background.jpg");
+  background-repeat: no-repeat;
+  background-position: 100% 100%;
+  background-attachment: fixed;
+  background-size: 300px;
+  opacity: .9;
 }

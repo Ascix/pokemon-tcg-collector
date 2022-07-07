@@ -2,7 +2,7 @@ import "./PlaceholderCards.css"
 
 function PlaceholderCards() {
     return (
-        <div className="row">
+        <div className="placeholders">
             <div className="placeholder">
             <img src='https://images.pokemontcg.io/base4/200.png'></img>
             </div>
