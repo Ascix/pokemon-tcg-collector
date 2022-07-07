@@ -14,7 +14,7 @@ import pokemon from "pokemontcgsdk";
 pokemon.configure({ apiKey: "0903cfaf-97d3-42cb-84cf-c142627e9438" });
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: "#F1F3DE",
+  backgroundColor: 'transparent',
   padding: theme.spacing(2),
   textAlign: "center",
   boxShadow: "none",
