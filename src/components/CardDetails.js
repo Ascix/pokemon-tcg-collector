@@ -47,7 +47,7 @@ function CardDetails() {
                   <Typography 
                     sx={{ mb: 1.5 }} 
                     color="text.secondary">
-                      Set: <Link to={`/set/${detail.data.set.id}`}>{detail.data.set.name}</Link> <img className='logo' src={detail.data.set.images.symbol}></img>
+                      Set: <Link to={`/set/${detail.data.set.id}`}>{detail.data.set.name}</Link> <img className='logo' src={detail.data.set.images.symbol} alt=""></img>
                   </Typography>
                   <Typography 
                     variant="body2">
