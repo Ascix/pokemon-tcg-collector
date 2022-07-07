@@ -23,7 +23,7 @@ function Set() {
           .then(result => {
             setSet(result.data)
           })
-    }, [])
+    }, [params.id])
 
     return (
     <div>
