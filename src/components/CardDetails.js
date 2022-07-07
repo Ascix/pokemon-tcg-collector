@@ -19,6 +19,7 @@ function CardDetails() {
   
     useEffect(() => {
       getDetail()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     if (!detail) {
       return null

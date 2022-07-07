@@ -29,7 +29,7 @@ function NewestSets() {
                 .then(result => {
                         setCards3(result.data)
                     })
-  })
+        })
     },[])
 
     return (
@@ -55,9 +55,9 @@ function NewestSets() {
                     color:"#CD0A0A",
                     borderColor: "#EC0101",
                     "&:hover": {
-                      backgroundColor: "#EB8F8F",
-                      color:"#CD0A0A",
-                      borderColor: "#EC0101"
+                        backgroundColor: "#EB8F8F",
+                        color:"#CD0A0A",
+                        borderColor: "#EC0101"
                     }
                 }}>
                         See all >
@@ -86,9 +86,9 @@ function NewestSets() {
                     color:"#CD0A0A",
                     borderColor: "#EC0101",
                     "&:hover": {
-                      backgroundColor: "#EB8F8F",
-                      color:"#CD0A0A",
-                      borderColor: "#EC0101"
+                        backgroundColor: "#EB8F8F",
+                        color:"#CD0A0A",
+                        borderColor: "#EC0101"
                     }
                 }}>
                         See all >
@@ -117,9 +117,9 @@ function NewestSets() {
                     color:"#CD0A0A",
                     borderColor: "#EC0101",
                     "&:hover": {
-                      backgroundColor: "#EB8F8F",
-                      color:"#CD0A0A",
-                      borderColor: "#EC0101"
+                        backgroundColor: "#EB8F8F",
+                        color:"#CD0A0A",
+                        borderColor: "#EC0101"
                     }
                 }}>
                         See all >
